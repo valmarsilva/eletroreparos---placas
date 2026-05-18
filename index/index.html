@@ -352,6 +352,11 @@
           </p>
 
           <p>
+            <strong>E-mail:</strong>
+            <a href="mailto:contato@reparo.com.br">contato@reparo.com.br</a>
+          </p>
+
+          <p>
             <strong>Endereço:</strong>
             Rua Bruno Vicente da Luz, 801 - Espinheiros - Itajaí/SC
           </p>
@@ -393,12 +398,7 @@
           </a>
         </div>
 
-        <div class="aviso">
-          <strong>Importante:</strong>
-          troque no código o endereço
-          <code>https://SEU-USUARIO.github.io/reparo-placas/</code>
-          pelo link real do seu site publicado no GitHub Pages.
-        </div>
+       
       </div>
     </section>
 
@@ -420,11 +420,136 @@
       </div>
     </section>
   </main>
+  <section class="formulario" id="orcamento">
+  <div class="container-formulario">
+    <h2>Solicitar Orçamento</h2>
+
+    <p class="descricao-formulario">
+      Preencha seus dados e informe se a placa eletrônica é uma 
+      <strong>Placa Inverter</strong> ou uma <strong>ECU Automotiva</strong>.
+      A equipe da TecnoReparos PlacasEletro entrará em contato para avaliar o reparo.
+    </p>
+
+    <form action="https://formsubmit.co/itapara30@gmail.com" method="POST" enctype="multipart/form-data">
+      
+      <input type="hidden" name="_subject" value="Nova solicitação - TecnoReparos PlacasEletro">
+      <input type="hidden" name="_captcha" value="false">
+
+      <div class="grupo-campo">
+        <label for="nome">Nome completo</label>
+        <input 
+          type="text" 
+          id="nome" 
+          name="Nome completo" 
+          placeholder="Digite seu nome completo" 
+          required>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="telefone">Telefone / WhatsApp</label>
+        <input 
+          type="tel" 
+          id="telefone" 
+          name="Telefone ou WhatsApp" 
+          placeholder="(47) 99999-9999" 
+          required>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="email">E-mail</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="E-mail" 
+          placeholder="seuemail@exemplo.com">
+      </div>
+
+      <div class="grupo-campo">
+        <label for="cidade">Cidade / Bairro</label>
+        <input 
+          type="text" 
+          id="cidade" 
+          name="Cidade e Bairro" 
+          placeholder="Ex: Itajaí - Centro">
+      </div>
+
+      <div class="grupo-campo">
+        <label for="tipo-placa">Tipo de placa eletrônica</label>
+        <select id="tipo-placa" name="Tipo de placa eletrônica" required>
+          <option value="">Selecione uma opção</option>
+          <option value="Placa Inverter">Placa Inverter</option>
+          <option value="ECU Automotiva">ECU Automotiva</option>
+        </select>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="aparelho">A placa pertence a qual aparelho ou veículo?</label>
+        <input 
+          type="text" 
+          id="aparelho" 
+          name="Aparelho ou veículo de origem" 
+          placeholder="Ex: máquina de lavar, ar-condicionado, veículo Fiat, VW, GM..."
+          required>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="marca-modelo">Marca e modelo</label>
+        <input 
+          type="text" 
+          id="marca-modelo" 
+          name="Marca e modelo" 
+          placeholder="Ex: Electrolux, LG, Samsung, Bosch, Magneti Marelli...">
+      </div>
+
+      <div class="grupo-campo">
+        <label for="codigo-placa">Código ou referência da placa</label>
+        <input 
+          type="text" 
+          id="codigo-placa" 
+          name="Código da placa" 
+          placeholder="Informe o código, se houver">
+      </div>
+
+      <div class="grupo-campo">
+        <label for="defeito">Descrição do defeito</label>
+        <textarea 
+          id="defeito" 
+          name="Descrição do defeito" 
+          rows="5" 
+          placeholder="Descreva o problema. Ex: não liga, sem comunicação, falha de partida, não aciona motor/compressor, queimou componente, erro no equipamento..."
+          required></textarea>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="observacoes">Observações adicionais</label>
+        <textarea 
+          id="observacoes" 
+          name="Observações adicionais" 
+          rows="4" 
+          placeholder="Informe detalhes extras, histórico do defeito ou qualquer informação importante."></textarea>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="foto">Enviar foto da placa</label>
+        <input 
+          type="file" 
+          id="foto" 
+          name="Foto da placa" 
+          accept="image/*">
+      </div>
+
+      <button type="submit" class="botao-enviar">
+        Enviar Solicitação
+      </button>
+    </form>
+  </div>
+</section>
+
 
   <footer>
     <div class="container">
       <p>
-        Reparo de Placas Eletrônicas - Itajaí/SC
+       TecnoReparos PlacasEletro - Itajaí/SC
       </p>
 
       <p>
@@ -432,6 +557,11 @@
         <a href="https://wa.me/5547992460045" target="_blank">
           (47) 99246-0045
         </a>
+      </p>
+
+      <p>
+        E-mail:
+        <a href="mailto:contato@reparo.com.br">contato@reparo.com.br</a>
       </p>
     </div>
   </footer>
