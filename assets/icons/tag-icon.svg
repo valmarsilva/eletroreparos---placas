@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Ícone de reparo elétrico">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="bolt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="24" fill="url(#bg)"/>
+  <g transform="translate(16 16)">
+    <rect x="8" y="8" width="88" height="88" rx="20" fill="#ffffff" opacity="0.06"/>
+    <path d="M47 16 L29 52 H45 L33 88 L69 40 H53 L65 16 Z" fill="url(#bolt)" stroke="#f8a21e" stroke-width="2"/>
+    <path d="M26 72 L40 86" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+    <path d="M46 66 L58 78" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="60" cy="78" r="3.5" fill="#ffffff"/>
+    <path d="M30 74 C28 80 34 86 40 84" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>
