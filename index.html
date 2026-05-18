@@ -28,7 +28,7 @@
       </p>
 
       <div class="botoes">
-        <a class="botao botao-whats" href="https://wa.me/5547992460045" target="_blank">
+        <a class="botao botao-whats" href="https://wa.me/5547992460045" target="_blank" rel="noopener noreferrer">
           Chamar no WhatsApp
         </a>
 
@@ -40,6 +40,7 @@
           class="botao botao-mapa"
           href="https://www.google.com/maps/search/?api=1&query=Rua%20Bruno%20Vicente%20da%20Luz%20801%20Espinheiros%20Itajai%20SC"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Ver Localização
         </a>
@@ -89,7 +90,7 @@
         <div class="info">
           <p>
             <strong>WhatsApp:</strong>
-            <a href="https://wa.me/5547992460045" target="_blank">
+            <a href="https://wa.me/5547992460045" target="_blank" rel="noopener noreferrer">
               (47) 99246-0045
             </a>
           </p>
@@ -136,7 +137,7 @@
               alt="QR Code WhatsApp"
             />
             <p>Abrir conversa no WhatsApp</p>
-            <a class="botao-site" id="whatsapp-link" href="https://wa.me/5547992460045" target="_blank">
+            <a class="botao-site" id="whatsapp-link" href="https://wa.me/5547992460045" target="_blank" rel="noopener noreferrer">
               Abrir WhatsApp
             </a>
           </div>
@@ -149,7 +150,7 @@
               alt="QR Code do site"
             />
             <p>Abrir o site no celular</p>
-            <a class="botao-site" id="site-link" href="#" target="_blank">
+            <a class="botao-site" id="site-link" href="#" target="_blank" rel="noopener noreferrer">
               Abrir site
             </a>
           </div>
@@ -317,7 +318,7 @@
   Enviar Solicitação por E-mail
 </button>
 
-<button type="button" class="botao-whatsapp" onclick="enviarWhatsApp()">
+<button type="button" class="botao-whatsapp" id="btnEnviarWhatsApp">
   Enviar também pelo WhatsApp
 </button>
     </form>
@@ -335,7 +336,7 @@
 
       <p>
         WhatsApp:
-        <a href="https://wa.me/5547992460045" target="_blank">
+        <a href="https://wa.me/5547992460045" target="_blank" rel="noopener noreferrer">
           (47) 99246-0045
         </a>
       </p>
@@ -351,91 +352,10 @@
     class="whatsapp-flutuante"
     href="https://wa.me/5547992460045"
     target="_blank"
+    rel="noopener noreferrer"
   >
     WhatsApp
   </a>
-<script>
-  function enviarWhatsApp() {
-    const nome = document.getElementById("nome").value;
-    const telefone = document.getElementById("telefone").value;
-    const email = document.getElementById("email").value;
-    const cidade = document.getElementById("cidade").value;
-    const tipoPlaca = document.getElementById("tipo-placa").value;
-    const aparelho = document.getElementById("aparelho").value;
-    const marcaModelo = document.getElementById("marca-modelo").value;
-    const codigoPlaca = document.getElementById("codigo-placa").value;
-    const defeito = document.getElementById("defeito").value;
-    const observacoes = document.getElementById("observacoes").value;
-
-    const numeroWhatsApp = "5547992460045";
-
-    if (!nome || !telefone || !tipoPlaca || !aparelho || !defeito) {
-      alert("Por favor, preencha os campos obrigatórios antes de enviar pelo WhatsApp.");
-      return;
-    }
-
-    const mensagem = `\nNova solicitação de orçamento - TecnoReparos PlacasEletro\n\nDADOS DO CLIENTE\n\nNome: ${nome}\nTelefone/WhatsApp: ${telefone}\nE-mail: ${email}\nCidade/Bairro: ${cidade}\n\nINFORMAÇÕES DA PLACA\n\nTipo de placa: ${tipoPlaca}\nAparelho ou veículo de origem: ${aparelho}\nMarca e modelo: ${marcaModelo}\nCódigo da placa: ${codigoPlaca}\n\nDESCRIÇÃO DO DEFEITO\n\n${defeito}\n\nOBSERVAÇÕES\n\n${observacoes}`;
-
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-
-    window.open(url, "_blank");
-  }
-
-  window.addEventListener('load', function() {
-    const whatsappUrl = 'https://wa.me/5547992460045';
-    const currentUrl = window.location.origin + window.location.pathname;
-    const qrServer = 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=';
-
-    const whatsappQr = document.getElementById('whatsapp-qr');
-    const siteQr = document.getElementById('site-qr');
-    const installQr = document.getElementById('install-qr');
-    const siteLink = document.getElementById('site-link');
-    const whatsappLink = document.getElementById('whatsapp-link');
-    const installBtn = document.getElementById('btnInstalar');
-
-    if (whatsappQr) {
-      whatsappQr.src = qrServer + encodeURIComponent(whatsappUrl);
-    }
-    if (siteQr) {
-      siteQr.src = qrServer + encodeURIComponent(currentUrl);
-    }
-    if (installQr) {
-      installQr.src = qrServer + encodeURIComponent(currentUrl);
-    }
-    if (siteLink) {
-      siteLink.href = currentUrl;
-    }
-    if (whatsappLink) {
-      whatsappLink.href = whatsappUrl;
-    }
-
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(function(err){
-        console.warn('SW registration failed:', err);
-      });
-    }
-
-    let deferredPrompt = null;
-    window.addEventListener('beforeinstallprompt', function(event) {
-      event.preventDefault();
-      deferredPrompt = event;
-      if (installBtn) {
-        installBtn.style.display = 'inline-block';
-      }
-    });
-
-    if (installBtn) {
-      installBtn.addEventListener('click', async function() {
-        if (!deferredPrompt) {
-          return;
-        }
-        deferredPrompt.prompt();
-        const choiceResult = await deferredPrompt.userChoice;
-        deferredPrompt = null;
-        installBtn.style.display = 'none';
-      });
-    }
-  });
-</script>
+  <script src="js/app.js"></script>
 </body>
 </html>
