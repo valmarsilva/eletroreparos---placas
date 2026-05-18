@@ -542,8 +542,12 @@
       </div>
 
       <button type="submit" class="botao-enviar">
-        Enviar Solicitação
-      </button>
+  Enviar Solicitação por E-mail
+</button>
+
+<button type="button" class="botao-whatsapp" onclick="enviarWhatsApp()">
+  Enviar também pelo WhatsApp
+</button>
     </form>
   </div>
 </section>
@@ -578,5 +582,45 @@
   >
     WhatsApp
   </a>
+  <script>
+  function enviarWhatsApp() {
+    const nome = document.getElementById("nome").value;
+    const telefone = document.getElementById("telefone").value;
+    const email = document.getElementById("email").value;
+    const cidade = document.getElementById("cidade").value;
+    const tipoPlaca = document.getElementById("tipo-placa").value;
+    const aparelho = document.getElementById("aparelho").value;
+    const marcaModelo = document.getElementById("marca-modelo").value;
+    const codigoPlaca = document.getElementById("codigo-placa").value;
+    const defeito = document.getElementById("defeito").value;
+    const observacoes = document.getElementById("observacoes").value;
+
+    const numeroWhatsApp = "5547999999999";
+
+    const mensagem = `
+Nova solicitação de orçamento - TecnoReparos PlacasEletro
+
+Nome: ${nome}
+Telefone/WhatsApp: ${telefone}
+E-mail: ${email}
+Cidade/Bairro: ${cidade}
+
+Tipo de placa: ${tipoPlaca}
+Aparelho ou veículo de origem: ${aparelho}
+Marca e modelo: ${marcaModelo}
+Código da placa: ${codigoPlaca}
+
+Descrição do defeito:
+${defeito}
+
+Observações:
+${observacoes}
+    `;
+
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(url, "_blank");
+  }
+</script>
 </body>
 </html>
