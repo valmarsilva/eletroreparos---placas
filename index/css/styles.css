@@ -1,164 +1,11 @@
-Nenhum arquivo escolhido
-Toggle Sidebar
-
-GPT-5.5
-quero fazer um site  com pwa  de reparo de placas eletronicas  somente hmtl e css com formulario do cliente com meu telefone 47992460045 endereço rua bruno vicente da luz 801 espinheiros itajai-sc  inserir que busca no local se preferir  (simples) 
-GPT-5.5
-Claro, Valmar — abaixo vai um site simples para reparo de placas eletrônicas, com visual responsivo, formulário de cliente, telefone, endereço e aviso de busca no local.
-
-Observação rápida: PWA de verdade precisa de pelo menos um arquivo manifest.json e um sw.js com um pequeno JavaScript. O site em si está feito em HTML e CSS, mas para instalar como app é necessário esse complemento.
-
-Estrutura dos arquivos
-Crie uma pasta com estes arquivos:
-
-text
-
-
-site-reparo-placas/
-├── index.html
-├── style.css
-├── manifest.json
-└── sw.js
-index.html
-html
-
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Reparo de Placas Eletrônicas em Itajaí</title>
-
-  <meta name="description" content="Serviço de reparo de placas eletrônicas em Itajaí-SC. Atendimento simples, orçamento e busca no local se preferir." />
-  <meta name="theme-color" content="#0f172a" />
-
-  <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
-
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js");
-    }
-  </script>
-</head>
-
-<body>
-  <header class="topo">
-    <div class="container">
-      <h1>Reparo de Placas Eletrônicas</h1>
-      <p>Conserto, análise e orçamento de placas eletrônicas em Itajaí-SC</p>
-
-      <div class="botoes-topo">
-        <a href="tel:+5547992460045" class="botao">Ligar Agora</a>
-        <a href="https://wa.me/5547992460045" class="botao botao-whats" target="_blank">
-          Chamar no WhatsApp
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="sobre">
-      <div class="container">
-        <h2>Serviço de Reparo</h2>
-        <p>
-          Realizo reparo e análise de placas eletrônicas, equipamentos, módulos,
-          fontes, placas de comando e outros componentes eletrônicos.
-        </p>
-
-        <div class="cards">
-          <div class="card">
-            <h3>Análise Técnica</h3>
-            <p>Verificação do defeito e possibilidade de reparo.</p>
-          </div>
-
-          <div class="card">
-            <h3>Orçamento</h3>
-            <p>Você recebe uma avaliação antes da execução do serviço.</p>
-          </div>
-
-          <div class="card">
-            <h3>Busca no Local</h3>
-            <p>Se preferir, buscamos a placa no local. Consulte disponibilidade.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contato">
-      <div class="container">
-        <h2>Dados de Atendimento</h2>
-
-        <div class="info">
-          <p><strong>Telefone / WhatsApp:</strong> <a href="tel:+5547992460045">(47) 99246-0045</a></p>
-          <p><strong>Endereço:</strong> Rua Bruno Vicente da Luz, 801</p>
-          <p><strong>Bairro:</strong> Espinheiros</p>
-          <p><strong>Cidade:</strong> Itajaí - SC</p>
-          <p><strong>Busca no local:</strong> Sim, se preferir. Consulte pelo WhatsApp.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="formulario">
-      <div class="container">
-        <h2>Formulário do Cliente</h2>
-        <p>Preencha os dados abaixo para solicitar orçamento ou atendimento.</p>
-
-        <form>
-          <label for="nome">Nome do cliente</label>
-          <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
-
-          <label for="telefone">Telefone / WhatsApp</label>
-          <input type="tel" id="telefone" name="telefone" placeholder="Ex: (47) 99999-9999" required />
-
-          <label for="email">E-mail</label>
-          <input type="email" id="email" name="email" placeholder="Digite seu e-mail" />
-
-          <label for="equipamento">Equipamento ou placa</label>
-          <input type="text" id="equipamento" name="equipamento" placeholder="Ex: placa de portão, fonte, módulo..." />
-
-          <label for="defeito">Descrição do defeito</label>
-          <textarea id="defeito" name="defeito" rows="5" placeholder="Descreva o problema apresentado"></textarea>
-
-          <label for="busca">Deseja busca no local?</label>
-          <select id="busca" name="busca">
-            <option value="">Selecione</option>
-            <option value="sim">Sim, quero que busque no local</option>
-            <option value="nao">Não, vou levar até o endereço</option>
-          </select>
-
-          <label for="endereco">Endereço para busca, se necessário</label>
-          <textarea id="endereco" name="endereco" rows="3" placeholder="Informe rua, número, bairro e referência"></textarea>
-
-          <button type="submit">Enviar Solicitação</button>
-
-          <p class="aviso">
-            Este formulário é visual. Para enviar automaticamente por WhatsApp ou e-mail,
-            é necessário adicionar uma função extra.
-          </p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>Reparo de Placas Eletrônicas - Itajaí/SC</p>
-      <p>Telefone: <a href="tel:+5547992460045">(47) 99246-0045</a></p>
-    </div>
-  </footer>
-</body>
-</html>
-style.css
-css
-
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -170,42 +17,45 @@ body {
 
 .container {
   width: 90%;
-  max-width: 1100px;
+  max-width: 1050px;
   margin: 0 auto;
 }
 
-.topo {
+header {
   background: linear-gradient(135deg, #0f172a, #1e40af);
   color: #ffffff;
-  padding: 60px 0;
+  padding: 55px 0;
   text-align: center;
 }
 
-.topo h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
+header h1 {
+  font-size: 38px;
+  margin-bottom: 12px;
 }
 
-.topo p {
+header p {
   font-size: 18px;
   margin-bottom: 25px;
 }
 
-.botoes-topo {
+.botoes {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .botao {
   display: inline-block;
-  background: #ffffff;
-  color: #0f172a;
-  padding: 12px 22px;
+  padding: 13px 22px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.2s;
+}
+
+.botao:hover {
+  transform: translateY(-2px);
 }
 
 .botao-whats {
@@ -213,19 +63,30 @@ body {
   color: #ffffff;
 }
 
+.botao-ligar {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.botao-mapa {
+  background: #f59e0b;
+  color: #111827;
+}
+
 section {
   padding: 45px 0;
 }
 
 h2 {
-  font-size: 28px;
-  margin-bottom: 15px;
   color: #0f172a;
+  font-size: 30px;
+  margin-bottom: 15px;
 }
 
 .sobre p,
 .contato p,
-.formulario p {
+.qrcode p,
+.mapa p {
   margin-bottom: 15px;
 }
 
@@ -238,22 +99,26 @@ h2 {
 
 .card {
   background: #ffffff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
   border-left: 5px solid #1e40af;
 }
 
 .card h3 {
-  margin-bottom: 10px;
   color: #1e40af;
+  margin-bottom: 10px;
+}
+
+.contato {
+  background: #ffffff;
 }
 
 .info {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  background: #f8fafc;
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
 }
 
 .info a {
@@ -262,140 +127,129 @@ h2 {
   text-decoration: none;
 }
 
-form {
-  background: #ffffff;
-
-
-inserir qrcode  e um botao para que se o cliente quiser deixar o app no celular conseguir
-GPT-5.5
-Claro, Valmar. Para o cliente conseguir instalar o site como app no celular, precisamos adicionar:
-
-Um botão “Instalar App no Celular”
-Um QR Code para o cliente acessar pelo celular
-Um pequeno JavaScript para ativar a instalação PWA
-Importante: para o botão de instalar funcionar, o site precisa estar publicado em HTTPS, por exemplo em hospedagem, Netlify, Vercel, GitHub Pages ou domínio próprio.
-
-1. Adicione esta parte no index.html
-Coloque este bloco dentro do <main>, de preferência antes do formulário:
-
-html
-
-
-<section class="app-pwa">
-  <div class="container">
-    <h2>Instale Nosso App no Celular</h2>
-
-    <p>
-      Aponte a câmera do celular para o QR Code ou clique no botão abaixo
-      para deixar nosso app instalado no seu celular.
-    </p>
-
-    <div class="pwa-box">
-      <div class="qrcode">
-        <img 
-          src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://SEU-SITE-AQUI.com.br" 
-          alt="QR Code para acessar o aplicativo" 
-        />
-        <p>Escaneie o QR Code</p>
-      </div>
-
-      <div class="instalar">
-        <h3>App de Reparo de Placas</h3>
-        <p>
-          Instale no celular para acessar mais rápido, solicitar orçamento
-          e entrar em contato pelo WhatsApp.
-        </p>
-
-        <button id="btnInstalar" class="botao-instalar">
-          Instalar App no Celular
-        </button>
-
-        <p class="aviso">
-          Caso o botão não apareça, abra o site pelo navegador do celular
-          e escolha a opção "Adicionar à tela inicial".
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-2. Troque o link do QR Code
-Nesta parte:
-
-html
-
-
-https://SEU-SITE-AQUI.com.br
-Você deve trocar pelo endereço real do seu site.
-
-Exemplo:
-
-html
-
-
-https://reparoplacasitajai.com.br
-Se quiser que o QR Code vá direto para o WhatsApp, use assim:
-
-html
-
-
-<img 
-  src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://wa.me/5547992460045" 
-  alt="QR Code do WhatsApp" 
-/>
-3. Adicione este CSS no final do style.css
-css
-
-
-.app-pwa {
-  background: #eaf1ff;
-}
-
-.pwa-box {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 25px;
-  align-items: center;
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
-  margin-top: 20px;
-}
-
 .qrcode {
+  background: #eaf1ff;
   text-align: center;
 }
 
-.qrcode img {
-  width: 220px;
-  height: 220px;
-  border: 8px solid #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+.qrcode-card {
+  background: #ffffff;
+  max-width: 430px;
+  margin: 25px auto 0;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+  border-top: 6px solid #1e40af;
 }
 
-.qrcode p {
-  margin-top: 10px;
-  font-weight: bold;
-  color: #0f172a;
-}
-
-.instalar h3 {
-  color: #1e40af;
-  margin-bottom: 10px;
+.qrcode-card h3 {
   font-size: 24px;
+  color: #1e40af;
+  margin-bottom: 15px;
 }
 
-.botao-instalar {
+.qrcode-card img {
+  width: 260px;
+  height: 260px;
+  max-width: 100%;
+  border-radius: 12px;
+  border: 10px solid #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+  margin-bottom: 15px;
+}
+
+.qrcode-card p {
+  font-weight: bold;
+  color: #334155;
+}
+
+.botao-site {
+  display: inline-block;
   background: #1e40af;
   color: #ffffff;
-  padding: 14px 24px;
-  border: none;
+  padding: 12px 20px;
   border-radius: 8px;
-  font-size: 17px;
+  text-decoration: none;
   font-weight: bold;
-  cursor: pointer;
-  margin-top: 15px;
+  margin-top: 8px;
+}
+
+.botao-site:hover {
+  background: #0f172a;
+}
+
+.aviso {
+  max-width: 720px;
+  margin: 25px auto 0;
+  background: #fff7ed;
+  border-left: 5px solid #f59e0b;
+  padding: 14px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.aviso code {
+  background: #ffedd5;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+
+.mapa {
+  background: #ffffff;
+}
+
+footer {
+  background: #0f172a;
+  color: #ffffff;
+  text-align: center;
+  padding: 24px 0;
+}
+
+footer a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.whatsapp-flutuante {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  background: #22c55e;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 14px 18px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+}
+
+@media (max-width: 850px) {
+  header h1 {
+    font-size: 31px;
+  }
+
+  header p {
+    font-size: 16px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .qrcode-card img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .whatsapp-flutuante {
+    right: 12px;
+    bottom: 12px;
+    padding: 12px 15px;
+    font-size: 14px;
+  }
 }
 
 .botao-instalar:hover {
