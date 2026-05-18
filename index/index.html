@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Reparo de Placas Eletrônicas em Itajaí</title>
+
+  <meta
+    name="description"
+    content="Reparo de placas eletrônicas em Itajaí-SC. Atendimento, orçamento e busca no local se o cliente preferir."
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e40af);
+      color: #ffffff;
+      padding: 55px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .botoes {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .botao {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .botao:hover {
+      transform: translateY(-2px);
+    }
+
+    .botao-whats {
+      background: #22c55e;
+      color: #ffffff;
+    }
+
+    .botao-ligar {
+      background: #ffffff;
+      color: #0f172a;
+    }
+
+    .botao-mapa {
+      background: #f59e0b;
+      color: #111827;
+    }
+
+    section {
+      padding: 45px 0;
+    }
+
+    h2 {
+      color: #0f172a;
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .sobre p,
+    .contato p,
+    .qrcode p,
+    .mapa p {
+      margin-bottom: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+      border-left: 5px solid #1e40af;
+    }
+
+    .card h3 {
+      color: #1e40af;
+      margin-bottom: 10px;
+    }
+
+    .contato {
+      background: #ffffff;
+    }
+
+    .info {
+      background: #f8fafc;
+      padding: 24px;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .info a {
+      color: #1e40af;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .qrcode {
+      background: #eaf1ff;
+      text-align: center;
+    }
+
+    .qrcode-card {
+      background: #ffffff;
+      max-width: 430px;
+      margin: 25px auto 0;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+      border-top: 6px solid #1e40af;
+    }
+
+    .qrcode-card h3 {
+      font-size: 24px;
+      color: #1e40af;
+      margin-bottom: 15px;
+    }
+
+    .qrcode-card img {
+      width: 260px;
+      height: 260px;
+      max-width: 100%;
+      border-radius: 12px;
+      border: 10px solid #ffffff;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+      margin-bottom: 15px;
+    }
+
+    .qrcode-card p {
+      font-weight: bold;
+      color: #334155;
+    }
+
+    .botao-site {
+      display: inline-block;
+      background: #1e40af;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .botao-site:hover {
+      background: #0f172a;
+    }
+
+    .aviso {
+      max-width: 720px;
+      margin: 25px auto 0;
+      background: #fff7ed;
+      border-left: 5px solid #f59e0b;
+      padding: 14px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .aviso code {
+      background: #ffedd5;
+      padding: 3px 6px;
+      border-radius: 5px;
+    }
+
+    .mapa {
+      background: #ffffff;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #ffffff;
+      text-align: center;
+      padding: 24px 0;
+    }
+
+    footer a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    .whatsapp-flutuante {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #22c55e;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 14px 18px;
+      border-radius: 999px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+    }
+
+    @media (max-width: 850px) {
+      header h1 {
+        font-size: 31px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .qrcode-card img {
+        width: 220px;
+        height: 220px;
+      }
+
+      .whatsapp-flutuante {
+        right: 12px;
+        bottom: 12px;
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>Reparo de Placas Eletrônicas</h1>
+
+      <p>
+        Atendimento em Itajaí-SC. Análise, orçamento e conserto de placas eletrônicas.
+      </p>
+
+      <div class="botoes">
+        <a class="botao botao-whats" href="https://wa.me/5547992460045" target="_blank">
+          Chamar no WhatsApp
+        </a>
+
+        <a class="botao botao-ligar" href="tel:+5547992460045">
+          Ligar Agora
+        </a>
+
+        <a
+          class="botao botao-mapa"
+          href="https://www.google.com/maps/search/?api=1&query=Rua%20Bruno%20Vicente%20da%20Luz%20801%20Espinheiros%20Itajai%20SC"
+          target="_blank"
+        >
+          Ver Localização
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="sobre">
+      <div class="container">
+        <h2>Serviços</h2>
+
+        <p>
+          Trabalhamos com análise e reparo de placas eletrônicas, fontes,
+          módulos, placas de comando e outros equipamentos eletrônicos.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Análise Técnica</h3>
+            <p>
+              Verificação do defeito e avaliação da possibilidade de conserto.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Orçamento</h3>
+            <p>
+              Você recebe uma avaliação antes da execução do serviço.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Busca no Local</h3>
+            <p>
+              Se preferir, podemos buscar a placa no local. Consulte pelo WhatsApp.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contato">
+      <div class="container">
+        <h2>Contato</h2>
+
+        <div class="info">
+          <p>
+            <strong>WhatsApp:</strong>
+            <a href="https://wa.me/5547992460045" target="_blank">
+              (47) 99246-0045
+            </a>
+          </p>
+
+          <p>
+            <strong>Telefone:</strong>
+            <a href="tel:+5547992460045">
+              (47) 99246-0045
+            </a>
+          </p>
+
+          <p>
+            <strong>Endereço:</strong>
+            Rua Bruno Vicente da Luz, 801 - Espinheiros - Itajaí/SC
+          </p>
+
+          <p>
+            <strong>Atendimento:</strong>
+            Reparo de placas eletrônicas com opção de busca no local.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="qrcode">
+      <div class="container">
+        <h2>QR Code do Site</h2>
+
+        <p>
+          Escaneie o QR Code abaixo para abrir este site no celular.
+        </p>
+
+        <div class="qrcode-card">
+          <h3>Acessar Site</h3>
+
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https://SEU-USUARIO.github.io/reparo-placas/"
+            alt="QR Code para acessar o site"
+          />
+
+          <p>
+            Aponte a câmera do celular para acessar.
+          </p>
+
+          <a
+            class="botao-site"
+            href="https://SEU-USUARIO.github.io/reparo-placas/"
+            target="_blank"
+          >
+            Abrir Site
+          </a>
+        </div>
+
+        <div class="aviso">
+          <strong>Importante:</strong>
+          troque no código o endereço
+          <code>https://SEU-USUARIO.github.io/reparo-placas/</code>
+          pelo link real do seu site publicado no GitHub Pages.
+        </div>
+      </div>
+    </section>
+
+    <section class="mapa">
+      <div class="container">
+        <h2>Localização</h2>
+
+        <p>
+          Rua Bruno Vicente da Luz, 801 - Espinheiros - Itajaí/SC
+        </p>
+
+        <a
+          class="botao botao-mapa"
+          href="https://www.google.com/maps/search/?api=1&query=Rua%20Bruno%20Vicente%20da%20Luz%20801%20Espinheiros%20Itajai%20SC"
+          target="_blank"
+        >
+          Abrir no Google Maps
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        Reparo de Placas Eletrônicas - Itajaí/SC
+      </p>
+
+      <p>
+        WhatsApp:
+        <a href="https://wa.me/5547992460045" target="_blank">
+          (47) 99246-0045
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <a
+    class="whatsapp-flutuante"
+    href="https://wa.me/5547992460045"
+    target="_blank"
+  >
+    WhatsApp
+  </a>
+</body>
+</html>

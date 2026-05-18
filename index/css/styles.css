@@ -1,0 +1,2537 @@
+Nenhum arquivo escolhido
+Toggle Sidebar
+
+GPT-5.5
+quero fazer um site  com pwa  de reparo de placas eletronicas  somente hmtl e css com formulario do cliente com meu telefone 47992460045 endereço rua bruno vicente da luz 801 espinheiros itajai-sc  inserir que busca no local se preferir  (simples) 
+GPT-5.5
+Claro, Valmar — abaixo vai um site simples para reparo de placas eletrônicas, com visual responsivo, formulário de cliente, telefone, endereço e aviso de busca no local.
+
+Observação rápida: PWA de verdade precisa de pelo menos um arquivo manifest.json e um sw.js com um pequeno JavaScript. O site em si está feito em HTML e CSS, mas para instalar como app é necessário esse complemento.
+
+Estrutura dos arquivos
+Crie uma pasta com estes arquivos:
+
+text
+
+
+site-reparo-placas/
+├── index.html
+├── style.css
+├── manifest.json
+└── sw.js
+index.html
+html
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Reparo de Placas Eletrônicas em Itajaí</title>
+
+  <meta name="description" content="Serviço de reparo de placas eletrônicas em Itajaí-SC. Atendimento simples, orçamento e busca no local se preferir." />
+  <meta name="theme-color" content="#0f172a" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
+</head>
+
+<body>
+  <header class="topo">
+    <div class="container">
+      <h1>Reparo de Placas Eletrônicas</h1>
+      <p>Conserto, análise e orçamento de placas eletrônicas em Itajaí-SC</p>
+
+      <div class="botoes-topo">
+        <a href="tel:+5547992460045" class="botao">Ligar Agora</a>
+        <a href="https://wa.me/5547992460045" class="botao botao-whats" target="_blank">
+          Chamar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="sobre">
+      <div class="container">
+        <h2>Serviço de Reparo</h2>
+        <p>
+          Realizo reparo e análise de placas eletrônicas, equipamentos, módulos,
+          fontes, placas de comando e outros componentes eletrônicos.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Análise Técnica</h3>
+            <p>Verificação do defeito e possibilidade de reparo.</p>
+          </div>
+
+          <div class="card">
+            <h3>Orçamento</h3>
+            <p>Você recebe uma avaliação antes da execução do serviço.</p>
+          </div>
+
+          <div class="card">
+            <h3>Busca no Local</h3>
+            <p>Se preferir, buscamos a placa no local. Consulte disponibilidade.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contato">
+      <div class="container">
+        <h2>Dados de Atendimento</h2>
+
+        <div class="info">
+          <p><strong>Telefone / WhatsApp:</strong> <a href="tel:+5547992460045">(47) 99246-0045</a></p>
+          <p><strong>Endereço:</strong> Rua Bruno Vicente da Luz, 801</p>
+          <p><strong>Bairro:</strong> Espinheiros</p>
+          <p><strong>Cidade:</strong> Itajaí - SC</p>
+          <p><strong>Busca no local:</strong> Sim, se preferir. Consulte pelo WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="formulario">
+      <div class="container">
+        <h2>Formulário do Cliente</h2>
+        <p>Preencha os dados abaixo para solicitar orçamento ou atendimento.</p>
+
+        <form>
+          <label for="nome">Nome do cliente</label>
+          <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
+
+          <label for="telefone">Telefone / WhatsApp</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="Ex: (47) 99999-9999" required />
+
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="Digite seu e-mail" />
+
+          <label for="equipamento">Equipamento ou placa</label>
+          <input type="text" id="equipamento" name="equipamento" placeholder="Ex: placa de portão, fonte, módulo..." />
+
+          <label for="defeito">Descrição do defeito</label>
+          <textarea id="defeito" name="defeito" rows="5" placeholder="Descreva o problema apresentado"></textarea>
+
+          <label for="busca">Deseja busca no local?</label>
+          <select id="busca" name="busca">
+            <option value="">Selecione</option>
+            <option value="sim">Sim, quero que busque no local</option>
+            <option value="nao">Não, vou levar até o endereço</option>
+          </select>
+
+          <label for="endereco">Endereço para busca, se necessário</label>
+          <textarea id="endereco" name="endereco" rows="3" placeholder="Informe rua, número, bairro e referência"></textarea>
+
+          <button type="submit">Enviar Solicitação</button>
+
+          <p class="aviso">
+            Este formulário é visual. Para enviar automaticamente por WhatsApp ou e-mail,
+            é necessário adicionar uma função extra.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Reparo de Placas Eletrônicas - Itajaí/SC</p>
+      <p>Telefone: <a href="tel:+5547992460045">(47) 99246-0045</a></p>
+    </div>
+  </footer>
+</body>
+</html>
+style.css
+css
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7fb;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.topo {
+  background: linear-gradient(135deg, #0f172a, #1e40af);
+  color: #ffffff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.topo h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.topo p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.botoes-topo {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.botao {
+  display: inline-block;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.botao-whats {
+  background: #22c55e;
+  color: #ffffff;
+}
+
+section {
+  padding: 45px 0;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #0f172a;
+}
+
+.sobre p,
+.contato p,
+.formulario p {
+  margin-bottom: 15px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #1e40af;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #1e40af;
+}
+
+.info {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.info a {
+  color: #1e40af;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+form {
+  background: #ffffff;
+
+
+inserir qrcode  e um botao para que se o cliente quiser deixar o app no celular conseguir
+GPT-5.5
+Claro, Valmar. Para o cliente conseguir instalar o site como app no celular, precisamos adicionar:
+
+Um botão “Instalar App no Celular”
+Um QR Code para o cliente acessar pelo celular
+Um pequeno JavaScript para ativar a instalação PWA
+Importante: para o botão de instalar funcionar, o site precisa estar publicado em HTTPS, por exemplo em hospedagem, Netlify, Vercel, GitHub Pages ou domínio próprio.
+
+1. Adicione esta parte no index.html
+Coloque este bloco dentro do <main>, de preferência antes do formulário:
+
+html
+
+
+<section class="app-pwa">
+  <div class="container">
+    <h2>Instale Nosso App no Celular</h2>
+
+    <p>
+      Aponte a câmera do celular para o QR Code ou clique no botão abaixo
+      para deixar nosso app instalado no seu celular.
+    </p>
+
+    <div class="pwa-box">
+      <div class="qrcode">
+        <img 
+          src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://SEU-SITE-AQUI.com.br" 
+          alt="QR Code para acessar o aplicativo" 
+        />
+        <p>Escaneie o QR Code</p>
+      </div>
+
+      <div class="instalar">
+        <h3>App de Reparo de Placas</h3>
+        <p>
+          Instale no celular para acessar mais rápido, solicitar orçamento
+          e entrar em contato pelo WhatsApp.
+        </p>
+
+        <button id="btnInstalar" class="botao-instalar">
+          Instalar App no Celular
+        </button>
+
+        <p class="aviso">
+          Caso o botão não apareça, abra o site pelo navegador do celular
+          e escolha a opção "Adicionar à tela inicial".
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+2. Troque o link do QR Code
+Nesta parte:
+
+html
+
+
+https://SEU-SITE-AQUI.com.br
+Você deve trocar pelo endereço real do seu site.
+
+Exemplo:
+
+html
+
+
+https://reparoplacasitajai.com.br
+Se quiser que o QR Code vá direto para o WhatsApp, use assim:
+
+html
+
+
+<img 
+  src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://wa.me/5547992460045" 
+  alt="QR Code do WhatsApp" 
+/>
+3. Adicione este CSS no final do style.css
+css
+
+
+.app-pwa {
+  background: #eaf1ff;
+}
+
+.pwa-box {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 25px;
+  align-items: center;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  margin-top: 20px;
+}
+
+.qrcode {
+  text-align: center;
+}
+
+.qrcode img {
+  width: 220px;
+  height: 220px;
+  border: 8px solid #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.qrcode p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #0f172a;
+}
+
+.instalar h3 {
+  color: #1e40af;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.botao-instalar {
+  background: #1e40af;
+  color: #ffffff;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.botao-instalar:hover {
+  background: #0f172a;
+}
+
+@media (max-width: 768px) {
+  .pwa-box {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .qrcode img {
+    width: 200px;
+    height: 200px;
+  }
+}
+4. Adicione este JavaScript antes do </body>
+No final do index.html, antes de fechar o </body>, coloque:
+
+html
+
+
+<script>
+  let eventoInstalacao;
+
+  window.addEventListener("beforeinstallprompt", function (event) {
+    event.preventDefault();
+    eventoInstalacao = event;
+
+    const botaoInstalar = document.getElementById("btnInstalar");
+
+    if (botaoInstalar) {
+      botaoInstalar.style.display = "inline-block";
+
+      botaoInstalar.addEventListener("click", function () {
+        eventoInstalacao.prompt();
+
+        eventoInstalacao.userChoice.then(function () {
+          eventoInstalacao = null;
+        });
+      });
+    }
+  });
+</script>
+5. Ajuste o botão para começar escondido
+No CSS, adicione também:
+
+css
+
+
+#btnInstalar {
+  display: none;
+}
+Assim o botão só aparece quando o navegador permitir instalar o app.
+
+6. Seu manifest.json pode ficar assim
+json
+
+
+{
+  "name": "Reparo de Placas Eletrônicas",
+  "short_name": "Reparo Placas",
+  "description": "Serviço de reparo de placas eletrônicas em Itajaí-SC",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0f172a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icone-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+7. Seu sw.js simples
+javascript
+
+
+const CACHE_NAME = "reparo-placas-v1";
+
+const arquivos = [
+  "./",
+  "./index.html",
+  "./style.css",
+  "./manifest.json"
+];
+
+self.addEventListener("install", function (event) {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(function (cache) {
+      return cache.addAll(arquivos);
+    })
+  );
+});
+
+self.addEventListener("fetch", function (event) {
+  event.respondWith(
+    caches.match(event.request).then(function (resposta) {
+      return resposta || fetch(event.request);
+    })
+  );
+});
+Observação importante
+Para funcionar como PWA instalável no celular, você precisa ter também os ícones:
+
+text
+
+
+icone-192.png
+icone-512.png
+Se quiser, posso montar agora para você o código completo atualizado do index.html e style.css já com QR Code e botão de instalar incluídos.
+
+
+
+faça  3 qrcodes :um para o zap outro para  site  e outro pára fixar no celular assim é bom?
+GPT-5.5
+Sim, Valmar, é uma boa ideia ter 3 QR Codes, mas com uma observação:
+
+QR Code do WhatsApp: abre conversa direto no seu WhatsApp.
+QR Code do Site: abre a página principal do site.
+QR Code para Fixar no Celular: abre a área do site com o botão/instrução para instalar como app.
+Na prática, o QR Code de “fixar no celular” vai abrir o site numa seção explicando como instalar, porque o QR Code sozinho não instala o app automaticamente.
+
+Código HTML dos 3 QR Codes
+Coloque esta seção no seu index.html, dentro do <main>:
+
+html
+
+
+<section class="qrcodes">
+  <div class="container">
+    <h2>QR Codes de Atendimento</h2>
+    <p>
+      Escaneie com a câmera do celular para falar no WhatsApp, acessar o site
+      ou instalar o app na tela inicial.
+    </p>
+
+    <div class="qrcode-grid">
+      <div class="qrcode-card">
+        <h3>WhatsApp</h3>
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://wa.me/5547992460045"
+          alt="QR Code do WhatsApp"
+        />
+        <p>Fale direto pelo WhatsApp</p>
+        <a class="botao-qrcode" href="https://wa.me/5547992460045" target="_blank">
+          Abrir WhatsApp
+        </a>
+      </div>
+
+      <div class="qrcode-card">
+        <h3>Site</h3>
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://SEU-SITE-AQUI.com.br"
+          alt="QR Code do site"
+        />
+        <p>Acesse nosso site</p>
+        <a class="botao-qrcode" href="https://SEU-SITE-AQUI.com.br" target="_blank">
+          Abrir Site
+        </a>
+      </div>
+
+      <div class="qrcode-card">
+        <h3>Fixar no Celular</h3>
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://SEU-SITE-AQUI.com.br%23instalar"
+          alt="QR Code para instalar o app no celular"
+        />
+        <p>Instale como app na tela inicial</p>
+        <a class="botao-qrcode" href="#instalar">
+          Ver Como Instalar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+Troque o endereço do site
+Onde estiver:
+
+html
+
+
+https://SEU-SITE-AQUI.com.br
+Troque pelo endereço real do seu site.
+
+Exemplo:
+
+html
+
+
+https://reparoplacasitajai.com.br
+CSS para os 3 QR Codes
+Adicione no final do seu style.css:
+
+css
+
+
+.qrcodes {
+  background: #f8fafc;
+  padding: 45px 0;
+}
+
+.qrcode-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 25px;
+}
+
+.qrcode-card {
+  background: #ffffff;
+  padding: 24px;
+  text-align: center;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.09);
+  border-top: 5px solid #1e40af;
+}
+
+.qrcode-card h3 {
+  color: #1e40af;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.qrcode-card img {
+  width: 220px;
+  height: 220px;
+  max-width: 100%;
+  border-radius: 12px;
+  border: 8px solid #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 12px;
+}
+
+.qrcode-card p {
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #334155;
+}
+
+.botao-qrcode {
+  display: inline-block;
+  background: #1e40af;
+  color: #ffffff;
+  padding: 11px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.botao-qrcode:hover {
+  background: #0f172a;
+}
+
+@media (max-width: 900px) {
+  .qrcode-grid {
+    grid-template-columns: 1fr;
+  }
+}
+Seção para instalar/fixar no celular
+Coloque esta parte também no index.html, abaixo dos QR Codes:
+
+html
+
+
+<section class="app-pwa" id="instalar">
+  <div class="container">
+    <h2>Fixar App no Celular</h2>
+
+    <p>
+      Você pode deixar este site instalado na tela inicial do celular,
+      como se fosse um aplicativo.
+    </p>
+
+    <div class="instalar-box">
+      <h3>Como instalar no Android</h3>
+      <p>
+        Abra o site no Google Chrome, toque nos três pontinhos do navegador
+        e escolha a opção <strong>Adicionar à tela inicial</strong>.
+      </p>
+
+      <h3>Como instalar no iPhone</h3>
+      <p>
+        Abra o site no Safari, toque no botão de compartilhar e escolha
+        <strong>Adicionar à Tela de Início</strong>.
+      </p>
+
+      <button id="btnInstalar" class="botao-instalar">
+        Instalar App no Celular
+      </button>
+
+      <p class="aviso">
+        Se o botão não aparecer, use a opção manual do navegador:
+        "Adicionar à tela inicial".
+      </p>
+    </div>
+  </div>
+</section>
+CSS da seção de instalar
+css
+
+
+.app-pwa {
+  background: #eaf1ff;
+  padding: 45px 0;
+}
+
+.instalar-box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  margin-top: 20px;
+}
+
+.instalar-box h3 {
+  color: #1e40af;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+.botao-instalar {
+  background: #22c55e;
+  color: #ffffff;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 18px;
+}
+
+.botao-instalar:hover {
+  background: #16a34a;
+}
+
+#btnInstalar {
+  display: none;
+}
+Resumo
+Sim, pode fazer assim:
+
+text
+
+
+QR Code 1: WhatsApp
+QR Code 2: Site
+QR Code 3: Fixar/instalar no celular
+Fica bom para colocar no site, cartão, adesivo, orçamento ou na bancada de atendimento.
+Só lembre que o QR Code de instalar precisa abrir o site publicado em HTTPS.
+
+
+
+faça tudo em unico codigo para jogar no git com as devidas pastas
+GPT-5.5
+Claro, Valmar. Abaixo está um código único que cria todas as pastas e arquivos do seu site PWA para jogar no GitHub.
+
+Ele vai criar esta estrutura:
+
+text
+
+
+reparo-placas/
+├── index.html
+├── manifest.webmanifest
+├── sw.js
+├── .nojekyll
+├── README.md
+└── assets/
+    ├── css/
+    │   └── style.css
+    ├── js/
+    │   └── app.js
+    └── icons/
+        └── icon.svg
+Código único para criar tudo
+No GitHub Pages, seu site geralmente fica assim:
+https://SEU-USUARIO.github.io/reparo-placas/
+
+Depois, troque no código o endereço https://SEU-USUARIO.github.io/reparo-placas/ pelo link real do seu site.
+
+Crie um arquivo chamado criar-site.sh, cole o código abaixo e execute no Git Bash ou terminal:
+
+bash
+
+
+#!/bin/bash
+
+mkdir -p reparo-placas/assets/css
+mkdir -p reparo-placas/assets/js
+mkdir -p reparo-placas/assets/icons
+
+cat > reparo-placas/.nojekyll <<'EOF'
+EOF
+
+cat > reparo-placas/README.md <<'EOF'
+# Reparo de Placas Eletrônicas - PWA
+
+Site simples em HTML, CSS e JavaScript para serviço de reparo de placas eletrônicas.
+
+## Dados
+
+- Telefone/WhatsApp: (47) 99246-0045
+- Endereço: Rua Bruno Vicente da Luz, 801 - Espinheiros - Itajaí/SC
+- Serviço: Reparo de placas eletrônicas
+- Possui busca no local se o cliente preferir
+
+## Publicação no GitHub Pages
+
+1. Crie um repositório chamado `reparo-placas`
+2. Envie todos os arquivos para o GitHub
+3. Vá em Settings > Pages
+4. Escolha a branch `main`
+5. Publique
+6. O site ficará parecido com:
+
+```text
+https://SEU-USUARIO.github.io/reparo-placas/
+Depois troque esse endereço dentro do index.html pelo link real do seu site. EOF
+
+cat > reparo-placas/index.html <<'EOF'
+
+Reparo de Placas Eletrônicas em Itajaí
+[Image blocked: Ícone de reparo eletrônico] Reparo Eletrônico
+
+
+  <h1>Reparo de Placas Eletrônicas</h1>
+
+  <p>
+    Análise, conserto e orçamento de placas eletrônicas em Itajaí-SC.
+  </p>
+
+  <div class="botoes-topo">
+    <a href="tel:+5547992460045" class="botao botao-claro">
+      Ligar Agora
+    </a>
+
+    <a href="https://wa.me/5547992460045" class="botao botao-whats" target="_blank" rel="noopener">
+      Chamar no WhatsApp
+    </a>
+
+    <a href="#instalar" class="botao botao-app">
+      Instalar App
+    </a>
+  </div>
+</div>
+Serviço de Reparo
+
+
+    <p>
+      Realizo análise e reparo de placas eletrônicas, fontes, módulos,
+      placas de comando, equipamentos eletrônicos e componentes relacionados.
+    </p>
+
+    <div class="cards">
+      <article class="card">
+        <h3>Análise Técnica</h3>
+        <p>Verificação do defeito e avaliação da possibilidade de reparo.</p>
+      </article>
+
+      <article class="card">
+        <h3>Orçamento</h3>
+        <p>Você recebe uma avaliação antes da execução do serviço.</p>
+      </article>
+
+      <article class="card">
+        <h3>Busca no Local</h3>
+        <p>Se preferir, buscamos a placa no local. Consulte disponibilidade.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contato">
+  <div class="container">
+    <h2>Dados de Atendimento</h2>
+
+    <div class="info">
+      <p>
+        <strong>Telefone / WhatsApp:</strong>
+        <a href="tel:+5547992460045">(47) 99246-0045</a>
+      </p>
+
+      <p>
+        <strong>Endereço:</strong>
+        Rua Bruno Vicente da Luz, 801
+      </p>
+
+      <p>
+        <strong>Bairro:</strong>
+        Espinheiros
+      </p>
+
+      <p>
+        <strong>Cidade:</strong>
+        Itajaí - SC
+      </p>
+
+      <p>
+        <strong>Busca no local:</strong>
+        Sim, se o cliente preferir. Consulte pelo WhatsApp.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="qrcodes">
+  <div class="container">
+    <h2>QR Codes de Atendimento</h2>
+
+    <p>
+      Escaneie com a câmera do celular para falar no WhatsApp, acessar o site
+      ou fixar o app na tela inicial.
+    </p>
+
+    <div class="qrcode-grid">
+      <article class="qrcode-card">
+        <h3>WhatsApp</h3>
+
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://wa.me/5547992460045"
+          alt="QR Code do WhatsApp"
+        />
+
+        <p>Fale direto pelo WhatsApp.</p>
+
+        <a class="botao-qrcode whatsapp" href="https://wa.me/5547992460045" target="_blank" rel="noopener">
+          Abrir WhatsApp
+        </a>
+      </article>
+
+      <article class="qrcode-card">
+        <h3>Site</h3>
+
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://SEU-USUARIO.github.io/reparo-placas/"
+          alt="QR Code do site"
+        />
+
+        <p>Acesse o site pelo celular.</p>
+
+        <a class="botao-qrcode" href="https://SEU-USUARIO.github.io/reparo-placas/" target="_blank" rel="noopener">
+          Abrir Site
+        </a>
+      </article>
+
+      <article class="qrcode-card">
+        <h3>Fixar no Celular</h3>
+
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://SEU-USUARIO.github.io/reparo-placas/%23instalar"
+          alt="QR Code para fixar o app no celular"
+        />
+
+        <p>Instale como app na tela inicial.</p>
+
+        <a class="botao-qrcode instalar" href="#instalar">
+          Ver Como Instalar
+        </a>
+      </article>
+    </div>
+
+    <div class="aviso-url">
+      <strong>Atenção:</strong>
+      troque <code>https://SEU-USUARIO.github.io/reparo-placas/</code>
+      pelo link real do seu site publicado no GitHub Pages.
+    </div>
+  </div>
+</section>
+
+<section class="app-pwa" id="instalar">
+  <div class="container">
+    <h2>Fixar App no Celular</h2>
+
+    <p>
+      O cliente pode deixar este site instalado na tela inicial do celular,
+      como se fosse um aplicativo.
+    </p>
+
+    <div class="instalar-box">
+      <div>
+        <h3>Botão de Instalação</h3>
+
+        <p>
+          Em celulares Android com Google Chrome, o botão abaixo pode abrir
+          a opção de instalação do app.
+        </p>
+
+        <button id="btnInstalar" class="botao-instalar" type="button">
+          Instalar App no Celular
+        </button>
+
+        <p id="mensagemInstalar" class="aviso">
+          Se o botão não abrir a instalação automática, use as instruções abaixo.
+        </p>
+      </div>
+
+      <div class="instrucoes">
+        <h3>Android</h3>
+        <p>
+          Abra o site no Google Chrome, toque nos três pontinhos do navegador
+          e escolha <strong>Adicionar à tela inicial</strong> ou
+          <strong>Instalar app</strong>.
+        </p>
+
+        <h3>iPhone</h3>
+        <p>
+          Abra o site no Safari, toque no botão de compartilhar e escolha
+          <strong>Adicionar à Tela de Início</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="formulario">
+  <div class="container">
+    <h2>Formulário do Cliente</h2>
+
+    <p>
+      Preencha os dados abaixo para solicitar orçamento. Ao enviar,
+      será aberta uma mensagem pronta no WhatsApp.
+    </p>
+
+    <form id="formCliente">
+      <label for="nome">Nome do cliente</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
+
+      <label for="telefone">Telefone / WhatsApp</label>
+      <input type="tel" id="telefone" name="telefone" placeholder="Ex: (47) 99999-9999" required />
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="Digite seu e-mail" />
+
+      <label for="equipamento">Equipamento ou placa</label>
+      <input type="text" id="equipamento" name="equipamento" placeholder="Ex: placa de portão, fonte, módulo..." />
+
+      <label for="defeito">Descrição do defeito</label>
+      <textarea id="defeito" name="defeito" rows="5" placeholder="Descreva o problema apresentado"></textarea>
+
+      <label for="busca">Deseja busca no local?</label>
+      <select id="busca" name="busca">
+        <option value="">Selecione</option>
+        <option value="Sim, quero que busque no local">Sim, quero que busque no local</option>
+        <option value="Não, vou levar até o endereço">Não, vou levar até o endereço</option>
+      </select>
+
+      <label for="endereco">Endereço para busca, se necessário</label>
+      <textarea id="endereco" name="endereco" rows="3" placeholder="Informe rua, número, bairro e referência"></textarea>
+
+      <button type="submit">
+        Enviar Solicitação pelo WhatsApp
+      </button>
+
+      <p class="aviso">
+        O envio será feito pelo WhatsApp para o número (47) 99246-0045.
+      </p>
+    </form>
+  </div>
+</section>
+
+<section class="mapa">
+  <div class="container">
+    <h2>Localização</h2>
+
+    <p>
+      Rua Bruno Vicente da Luz, 801 - Espinheiros - Itajaí/SC
+    </p>
+
+    <a
+      class="botao-mapa"
+      href="https://www.google.com/maps/search/?api=1&query=Rua%20Bruno%20Vicente%20da%20Luz%20801%20Espinheiros%20Itajai%20SC"
+      target="_blank"
+      rel="noopener"
+    >
+      Abrir no Google Maps
+    </a>
+  </div>
+</section>
+Reparo de Placas Eletrônicas - Itajaí/SC
+
+
+
+  <p>
+    Telefone:
+    <a href="tel:+5547992460045">(47) 99246-0045</a>
+  </p>
+</div>
+WhatsApp EOF
+cat > reparo-placas/assets/css/style.css <<'EOF'
+
+{ margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body { font-family: Arial, Helvetica, sans-serif; background: #f4f7fb; color: #1f2937; line-height: 1.6; }
+
+.container { width: 90%; max-width: 1100px; margin: 0 auto; }
+
+.topo { background: linear-gradient(135deg, #0f172a, #1e40af); color: #ffffff; padding: 55px 0; text-align: center; }
+
+.marca { display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.12); padding: 8px 14px; border-radius: 999px; margin-bottom: 22px; font-weight: bold; }
+
+.marca img { width: 34px; height: 34px; }
+
+.topo h1 { font-size: 38px; margin-bottom: 10px; }
+
+.topo p { font-size: 18px; margin-bottom: 25px; }
+
+.botoes-topo { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+.botao { display: inline-block; padding: 12px 22px; border-radius: 9px; text-decoration: none; font-weight: bold; transition: 0.2s; }
+
+.botao:hover { transform: translateY(-2px); }
+
+.botao-claro { background: #ffffff; color: #0f172a; }
+
+.botao-whats { background: #22c55e; color: #ffffff; }
+
+.botao-app { background: #f59e0b; color: #111827; }
+
+section { padding: 45px 0; }
+
+h2 { font-size: 29px; margin-bottom: 15px; color: #0f172a; }
+
+.sobre p, .contato p, .formulario p, .qrcodes p, .app-pwa p, .mapa p { margin-bottom: 15px; }
+
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 25px; }
+
+.card { background: #ffffff; padding: 25px; border-radius: 14px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); border-left: 5px solid #1e40af; }
+
+.card h3 { margin-bottom: 10px; color: #1e40af; }
+
+.info { background: #ffffff; padding: 25px; border-radius: 14px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); }
+
+.info a { color: #1e40af; font-weight: bold; text-decoration: none; }
+
+.qrcodes { background: #f8fafc; }
+
+.qrcode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 25px; }
+
+.qrcode-card { background: #ffffff; padding: 24px; text-align: center; border-radius: 14px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.09); border-top: 5px solid #1e40af; }
+
+.qrcode-card h3 { color: #1e40af; font-size: 22px; margin-bottom: 15px; }
+
+.qrcode-card img { width: 240px; height: 240px; max-width: 100%; border-radius: 12px; border: 8px solid #ffffff; box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15); margin-bottom: 12px; }
+
+.qrcode-card p { font-weight: bold; color: #334155; }
+
+.botao-qrcode { display: inline-block; background: #1e40af; color: #ffffff; padding: 11px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+
+.botao-qrcode:hover { background: #0f172a; }
+
+.botao-qrcode.whatsapp { background: #22c55e; }
+
+.botao-qrcode.instalar { background: #f59e0b; color: #111827; }
+
+.aviso-url { margin-top: 20px; background: #fff7ed; border-left: 5px solid #f59e0b; padding: 14px; border-radius: 10px; }
+
+.aviso-url code { background: #ffedd5; padding: 3px 6px; border-radius: 5px; }
+
+.app-pwa { background: #eaf1ff; }
+
+.instalar-box { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; background: #ffffff; padding: 25px; border-radius: 14px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); margin-top: 20px; }
+
+.instalar-box h3 { color: #1e40af; margin-bottom: 8px; }
+
+.instrucoes h3 { margin-top: 10px; }
+
+.botao-instalar { background: #22c55e; color: #ffffff; padding: 14px 24px; border: none; border-radius: 8px; font-size: 17px; font-weight: bold; cursor: pointer; margin-top: 12px; }
+
+.botao-instalar:hover { background: #16a34a; }
+
+form { background: #ffffff; padding: 28px; border-radius: 14px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); margin-top: 20px; }
+
+label { display: block; font-weight: bold; margin-bottom: 6px; color: #111827; }
+
+input, textarea, select { width: 100%; padding: 12px; margin-bottom: 18px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 16px; font-family: Arial, Helvetica, sans-serif; }
+
+input:focus, textarea:focus, select:focus { outline: none; border-color: #1e40af; box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.15); }
+
+form button { background: #22c55e; color: #ffffff; padding: 14px 24px; border: none; border-radius: 8px; font-size: 17px; font-weight: bold; cursor: pointer; }
+
+form button:hover { background: #16a34a; }
+
+.aviso { font-size: 14px; color: #64748b; margin-top: 12px; }
+
+.mapa { background: #ffffff; }
+
+.botao-mapa { display: inline-block; background: #0f172a; color: #ffffff; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+
+footer { background: #0f172a; color: #ffffff; text-align: center; padding: 25px 0; }
+
+footer a { color: #93c5fd; text-decoration: none; }
+
+.whatsapp-flutuante { position: fixed; right: 18px; bottom: 18px; background: #22c55e; color: #ffffff; text-decoration: none; font-weight: bold; padding: 14px 18px; border-radius: 999px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); z-index: 999; }
+
+@media (max-width: 900px) { .cards, .qrcode-grid, .instalar-box { grid-template-columns: 1fr; }
+
+.topo h1 { font-size: 31px; }
+
+.topo p { font-size: 16px; } }
+
+@media (max-width: 480px) { .qrcode-card img { width: 210px; height: 210px; }
+
+.whatsapp-flutuante { right: 12px; bottom: 12px; padding: 12px 15px; font-size: 14px; } } EOF
+
+cat > reparo-placas/assets/js/app.js <<'EOF' const telefoneWhatsApp = "5547992460045";
+
+if ("serviceWorker" in navigator) { window.addEventListener("load", function () { navigator.serviceWorker.register("./sw.js").catch(function (erro) { console.log("Service Worker não registrado:", erro); }); }); }
+
+let eventoInstalacao = null;
+
+window.addEventListener("beforeinstallprompt", function (event) { event.preventDefault(); eventoInstalacao = event;
+
+const mensagem = document.getElementById("mensagemInstalar");
+
+if (mensagem) { mensagem.textContent = "Seu navegador permite instalar este site como app. Clique no botão acima."; } });
+
+const botaoInstalar = document.getElementById("btnInstalar");
+
+if (botaoInstalar) { botaoInstalar.addEventListener("click", async function () { if (eventoInstalacao) { eventoInstalacao.prompt(); await eventoInstalacao.userChoice; eventoInstalacao = null; } else { const mensagem = document.getElementById("mensagemInstalar");
+
+
+
+  if (mensagem) {
+    mensagem.textContent = "Se não abriu automático, no Android use Chrome > três pontinhos > Adicionar à tela inicial. No iPhone use Safari > Compartilhar > Adicionar à Tela de Início.";
+  }
+
+  alert("Para instalar: no Android use Chrome > três pontinhos > Adicionar à tela inicial. No iPhone use Safari > Compartilhar > Adicionar à Tela de Início.");
+}
+}); }
+
+const formCliente = document.getElementById("formCliente");
+
+if (formCliente) { formCliente.addEventListener("submit", function (event) { event.preventDefault();
+
+
+
+const nome = document.getElementById("nome").value.trim();
+const telefone = document.getElementById("telefone").value.trim();
+const email = document.getElementById("email").value.trim();
+const equipamento = document.getElementById("equipamento").value.trim();
+const defeito = document.getElementById("defeito").value.trim();
+const busca = document.getElementById("busca").value.trim();
+const endereco = document.getElementById("endereco").value.trim();
+
+const mensagem = `Olá, gostaria de solicitar orçamento para reparo de placa eletrônica.
+Nome: ${nome} Telefone: ${telefone} E-mail: ${email || "Não informado"} Equipamento/Placa: ${equipamento || "Não informado"} Defeito: ${defeito || "Não informado"} Busca no local: ${busca || "Não informado"} Endereço para busca: ${endereco || "Não informado"}`;
+
+
+
+const url = `https://wa.me/${telefoneWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
+window.open(url, "_blank");
+}); } EOF
+
+cat > reparo-placas/manifest.webmanifest <<'EOF' { "name": "Reparo de Placas Eletrônicas", "short_name": "Reparo Placas", "description": "Serviço de reparo de placas eletrônicas em Itajaí-SC", "start_url": "./", "scope": "./", "display": "standalone", "background_color": "#f4f7fb", "theme_color": "#0f172a", "orientation": "portrait", "icons": [ { "src": "assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" } ] } EOF
+
+cat > reparo-placas/sw.js <<'EOF' const CACHE_NAME = "reparo-placas-v1";
+
+const ARQUIVOS_CACHE = [ "./", "./index.html", "./manifest.webmanifest", "./assets/css/style.css", "./assets/js/app.js", "./assets/icons/icon.svg" ];
+
+self.addEventListener("install", function (event) { event.waitUntil( caches.open(CACHE_NAME).then(function (cache) { return cache.addAll(ARQUIVOS_CACHE); }) );
+
+self.skipWaiting(); });
+
+self.addEventListener("activate", function (event) { event.waitUntil( caches.keys().then(function (chaves) { return Promise.all( chaves.map(function (chave) { if (chave !== CACHE_NAME) { return caches.delete(chave); } }) ); }) );
+
+self.clients.claim(); });
+
+self.addEventListener("fetch", function (event) { event.respondWith( caches.match(event.request).then(function (resposta) { return resposta || fetch(event.request); }) ); }); EOF
+
+cat > reparo-placas/assets/icons/icon.svg <<'EOF' EOF
+
+echo "Projeto criado com sucesso!" echo "Pasta criada: reparo-placas" echo "Agora envie a pasta para o GitHub." echo "Depois troque no index.html o link https://SEU-USUARIO.github.io/reparo-placas/ pelo link real do seu site."
+
+
+
+
+---
+
+## Como usar
+
+Depois de rodar o script, entre na pasta:
+
+```bash
+cd reparo-placas
+Inicie o Git:
+
+bash
+
+
+git init
+git add .
+git commit -m "Site PWA de reparo de placas"
+Depois crie um repositório no GitHub chamado, por exemplo:
+
+text
+
+
+reparo-placas
+E envie:
+
+bash
+
+
+git branch -M main
+git remote add origin https://github.com/SEU-USUARIO/reparo-placas.git
+git push -u origin main
+Importante para os QR Codes
+No arquivo index.html, procure por:
+
+text
+
+
+https://SEU-USUARIO.github.io/reparo-placas/
+E troque pelo link real do seu GitHub Pages.
+
+Os 3 QR Codes ficam assim:
+
+WhatsApp
+Abre direto conversa no seu número.
+Site
+Abre a página principal.
+Fixar no Celular
+Abre direto na parte que ensina instalar o app na tela inicial.
+Sim, Valmar, esse formato fica bom para cliente escanear, acessar rápido e salvar o app no celular.
+
+
+
+PS C:\Users\Administrator> cat > reparo-placas/.nojekyll <<'EOF'
+At line:1 char:32
++ cat > reparo-placas/.nojekyll <<'EOF'
++                                ~
+Missing file specification after redirection operator.
+At line:1 char:31
++ cat > reparo-placas/.nojekyll <<'EOF'
++                               ~
+The '<' operator is reserved for future use.
+At line:1 char:32
++ cat > reparo-placas/.nojekyll <<'EOF'
++                                ~
+The '<' operator is reserved for future use.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingFileSpecification
+GPT-5.5
+Valmar, esse erro aconteceu porque você está usando PowerShell do Windows, e aquele comando:
+
+bash
+
+
+cat > arquivo <<'EOF'
+é comando de Linux/Git Bash, não funciona direto no PowerShell.
+
+Você tem 2 caminhos:
+
+Opção 1 — Mais fácil: usar Git Bash
+Se você tem o Git instalado, procure no Windows por:
+
+text
+
+
+Git Bash
+Abra o Git Bash e rode o script lá.
+
+Ou, se você salvou o arquivo como criar-site.sh, no PowerShell tente:
+
+powershell
+
+
+bash .\criar-site.sh
+Se funcionar, ele vai criar tudo automaticamente.
+
+Opção 2 — Corrigir no PowerShell
+No PowerShell, para criar o arquivo .nojekyll, use assim:
+
+powershell
+
+
+New-Item -ItemType File -Path "reparo-placas\.nojekyll" -Force
+Mas atenção: isso só corrige esse arquivo. O restante do script também usa comandos de Linux, então vai dar erro de novo se você continuar colando no PowerShell.
+
+Melhor solução para você agora
+Faça assim:
+
+1. Crie uma pasta onde quer salvar o projeto
+No PowerShell:
+
+powershell
+
+
+cd C:\Users\Administrator
+2. Crie o arquivo do script
+Digite:
+
+powershell
+
+
+notepad criar-site.sh
+Vai abrir o Bloco de Notas.
+
+3. Cole dentro dele o código grande que eu te mandei antes
+Cole o script inteiro, começando com:
+
+bash
+
+
+#!/bin/bash
+E terminando com:
+
+bash
+
+
+echo "Depois troque no index.html o link https://SEU-USUARIO.github.io/reparo-placas/ pelo link real do seu site."
+Salve e feche.
+
+4. Rode o script pelo PowerShell usando Bash
+No PowerShell, rode:
+
+powershell
+
+
+bash .\criar-site.sh
+Se o Git Bash estiver instalado corretamente, ele vai criar a pasta:
+
+text
+
+
+reparo-placas
+Se aparecer erro dizendo que bash não existe
+Instale o Git para Windows:
+
+https://git-scm.com/download/win
+
+Depois de instalar, feche e abra o PowerShell de novo e rode:
+
+powershell
+
+
+bash .\criar-site.sh
+Comando correto para subir para o GitHub
+Depois que a pasta for criada:
+
+powershell
+
+
+cd reparo-placas
+git init
+git add .
+git commit -m "Site PWA de reparo de placas"
+git branch -M main
+Depois você cria o repositório no GitHub e conecta com:
+
+powershell
+
+
+git remote add origin https://github.com/SEU-USUARIO/reparo-placas.git
+git push -u origin main
+Troque SEU-USUARIO pelo seu usuário do GitHub.
+
+Se quiser, eu também posso te mandar uma versão 100% PowerShell, em arquivo .ps1, sem precisar usar Git Bash.
+
+
+
+outra vez  achei o git basch refaça o passo a passo
+GPT-5.5
+Claro, Valmar. Agora que você achou o Git Bash, faça assim:
+
+Passo a passo no Git Bash
+1. Abra o Git Bash
+Procure no Windows por:
+
+text
+
+
+Git Bash
+Clique para abrir.
+
+2. Vá para a pasta do usuário
+No Git Bash, digite:
+
+bash
+
+
+cd /c/Users/Administrator
+Confira onde você está:
+
+bash
+
+
+pwd
+Deve aparecer algo parecido com:
+
+text
+
+
+/c/Users/Administrator
+3. Crie o arquivo do script
+Digite:
+
+bash
+
+
+notepad criar-site.sh
+Vai abrir o Bloco de Notas.
+
+4. Cole o código grande dentro do Bloco de Notas
+Cole todo o código que começa com:
+
+bash
+
+
+#!/bin/bash
+E termina com:
+
+bash
+
+
+echo "Depois troque no index.html o link https://SEU-USUARIO.github.io/reparo-placas/ pelo link real do seu site."
+Depois clique em:
+
+text
+
+
+Arquivo > Salvar
+Feche o Bloco de Notas.
+
+5. Execute o script
+No Git Bash, rode:
+
+bash
+
+
+bash criar-site.sh
+Se tudo der certo, vai aparecer:
+
+text
+
+
+Projeto criado com sucesso!
+Pasta criada: reparo-placas
+Agora envie a pasta para o GitHub.
+6. Entre na pasta criada
+bash
+
+
+cd reparo-placas
+Veja se os arquivos foram criados:
+
+bash
+
+
+ls
+Você deve ver algo assim:
+
+text
+
+
+README.md
+assets
+index.html
+manifest.webmanifest
+sw.js
+Agora subir para o GitHub
+7. Iniciar o Git
+Dentro da pasta reparo-placas, rode:
+
+bash
+
+
+git init
+Depois:
+
+bash
+
+
+git add .
+Depois:
+
+bash
+
+
+git commit -m "Site PWA de reparo de placas"
+8. Criar o repositório no GitHub
+Entre no GitHub e crie um repositório com o nome:
+
+text
+
+
+reparo-placas
+Não precisa marcar README, porque já criamos um.
+
+9. Conectar com o GitHub
+No Git Bash, rode este comando trocando SEU-USUARIO pelo seu usuário do GitHub:
+
+bash
+
+
+git branch -M main
+git remote add origin https://github.com/SEU-USUARIO/reparo-placas.git
+git push -u origin main
+Exemplo fictício:
+
+bash
+
+
+git remote add origin https://github.com/valmar/reparo-placas.git
+git push -u origin main
+Ativar o GitHub Pages
+Depois que subir:
+
+Entre no repositório no GitHub
+Clique em Settings
+Vá em Pages
+Em Source, escolha:
+text
+
+
+Deploy from a branch
+Em Branch, selecione:
+text
+
+
+main
+Na pasta, escolha:
+text
+
+
+/root
+Clique em Save
+Depois de alguns minutos, o site ficará em um link parecido com:
+
+text
+
+
+https://SEU-USUARIO.github.io/reparo-placas/
+Último ajuste importante
+Depois que o GitHub Pages gerar o link do site, abra o arquivo:
+
+text
+
+
+index.html
+Procure por:
+
+text
+
+
+https://SEU-USUARIO.github.io/reparo-placas/
+E troque pelo link real do seu site.
+
+Depois salve e envie de novo:
+
+bash
+
+
+git add .
+git commit -m "Ajusta link do site nos QR Codes"
+git push
+Resumo dos comandos principais
+bash
+
+
+cd /c/Users/Administrator
+notepad criar-site.sh
+bash criar-site.sh
+cd reparo-placas
+git init
+git add .
+git commit -m "Site PWA de reparo de placas"
+git branch -M main
+git remote add origin https://github.com/SEU-USUARIO/reparo-placas.git
+git push -u origin main
+Pronto, Valmar. Fazendo assim pelo Git Bash, aquele erro do PowerShell não vai acontecer.
+
+
+
+pode fazer so html e css  com qrcode para o site  num codigo unico?
+GPT-5.5
+Sim, Valmar. Abaixo está um único arquivo index.html, com HTML + CSS juntos, sem JavaScript e com QR Code para o site.
+
+Você só precisa trocar este trecho:
+
+text
+
+
+https://SEU-USUARIO.github.io/reparo-placas/
+pelo link real do seu site.
+
+Arquivo único: index.html
+Crie um arquivo chamado index.html e cole tudo abaixo:
+
+html
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Reparo de Placas Eletrônicas em Itajaí</title>
+
+  <meta
+    name="description"
+    content="Reparo de placas eletrônicas em Itajaí-SC. Atendimento, orçamento e busca no local se o cliente preferir."
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e40af);
+      color: #ffffff;
+      padding: 55px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .botoes {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .botao {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .botao:hover {
+      transform: translateY(-2px);
+    }
+
+    .botao-whats {
+      background: #22c55e;
+      color: #ffffff;
+    }
+
+    .botao-ligar {
+      background: #ffffff;
+      color: #0f172a;
+    }
+
+    .botao-mapa {
+      background: #f59e0b;
+      color: #111827;
+    }
+
+    section {
+      padding: 45px 0;
+    }
+
+    h2 {
+      color: #0f172a;
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .sobre p,
+    .contato p,
+    .qrcode p,
+    .mapa p {
+      margin-bottom: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+      border-left: 5px solid #1e40af;
+    }
+
+    .card h3 {
+      color: #1e40af;
+      margin-bottom: 10px;
+    }
+
+    .contato {
+      background: #ffffff;
+    }
+
+    .info {
+      background: #f8fafc;
+      padding: 24px;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .info a {
+      color: #1e40af;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .qrcode {
+      background: #eaf1ff;
+      text-align: center;
+    }
+
+    .qrcode-card {
+      background: #ffffff;
+      max-width: 430px;
+      margin: 25px auto 0;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+      border-top: 6px solid #1e40af;
+    }
+
+    .qrcode-card h3 {
+      font-size: 24px;
+      color: #1e40af;
+      margin-bottom: 15px;
+    }
+
+    .qrcode-card img {
+      width: 260px;
+      height: 260px;
+      max-width: 100%;
+      border-radius: 12px;
+      border: 10px solid #ffffff;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+      margin-bottom: 15px;
+    }
+
+    .qrcode-card p {
+      font-weight: bold;
+      color: #334155;
+    }
+
+    .botao-site {
+      display: inline-block;
+      background: #1e40af;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .botao-site:hover {
+      background: #0f172a;
+    }
+
+    .aviso {
+      max-width: 720px;
+      margin: 25px auto 0;
+      background: #fff7ed;
+      border-left: 5px solid #f59e0b;
+      padding: 14px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .aviso code {
+      background: #ffedd5;
+      padding: 3px 6px;
+      border-radius: 5px;
+    }
+
+    .mapa {
+      background: #ffffff;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #ffffff;
+      text-align: center;
+      padding: 24px 0;
+    }
+
+    footer a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    .whatsapp-flutuante {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #22c55e;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 14px 18px;
+      border-radius: 999px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+    }
+
+    @media (max-width: 850px) {
+      header h1 {
+        font-size: 31px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .qrcode-card img {
+        width: 220px;
+        height: 220px;
+      }
+
+      .whatsapp-flutuante {
+        right: 12px;
+        bottom: 12px;
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>Reparo de Placas Eletrônicas</h1>
+
+      <p>
+        Atendimento em Itajaí-SC. Análise, orçamento e conserto de placas eletrônicas.
+      </p>
+
+      <div class="botoes">
+        <a class="botao botao-whats" href="https://wa.me/5547992460045" target="_blank">
+          Chamar no WhatsApp
+        </a>
+
+        <a class="botao botao-ligar" href="tel:+5547992460045">
+          Ligar Agora
+        </a>
+
+        <a
+          class="botao botao-mapa"
+          href="https://www.google.com/maps/search/?api=1&query=Rua%20Bruno%20Vicente%20da%20Luz%20801%20Espinheiros%20Itajai%20SC"
+          target="_blank"
+        >
+          Ver Localização
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="sobre">
+      <div class="container">
+        <h2>Serviços</h2>
+
+        <p>
+          Trabalhamos com análise e reparo de placas eletrônicas, fontes,
+          módulos, placas de comando e outros equipamentos eletrônicos.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Análise Técnica</h3>
+            <p>
+              Verificação do defeito e avaliação da possibilidade de conserto.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Orçamento</h3>
+            <p>
+              Você recebe uma avaliação antes da execução do serviço.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Busca no Local</h3>
+            <p>
+              Se preferir, podemos buscar a placa no local. Consulte pelo WhatsApp.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contato">
+      <div class="container">
+        <h2>Contato</h2>
+
+        <div class="info">
+          <p>
+            <strong>WhatsApp:</strong>
+            <a href="https://wa.me/5547992460045" target="_blank">
+              (47) 99246-0045
+            </a>
+          </p>
+
+          <p>
+            <strong>Telefone:</strong>
+            <a href="tel:+5547992460045">
+              (47) 99246-0045
+            </a>
+          </p>
+
+          <p>
+            <strong>Endereço:</strong>
+            Rua Bruno Vicente da Luz, 801 - Espinheiros - Itajaí/SC
+          </p>
+
+          <p>
+            <strong>Atendimento:</strong>
+            Reparo de placas eletrônicas com opção de busca no local.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="qrcode">
+      <div class="container">
+        <h2>QR Code do Site</h2>
+
+        <p>
+          Escaneie o QR Code abaixo para abrir este site no celular.
+        </p>
+
+        <div class="qrcode-card">
+          <h3>Acessar Site</h3>
+
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https://SEU-USUARIO.github.io/reparo-placas/"
+            alt="QR Code para acessar o site"
+          />
+
+          <p>
+            Aponte a câmera do celular para acessar.
+          </p>
+
+          <a
+            class="botao-site"
+            href="https://SEU-USUARIO.github.io/reparo-placas/"
+            target="_blank"
+          >
+            Abrir Site
+          </a>
+        </div>
+
+        <div class="aviso">
+          <strong>Importante:</strong>
+          troque no código o endereço
+          <code>https://SEU-USUARIO.github.io/reparo-placas/</code>
+          pelo link real do seu site publicado no GitHub Pages.
+        </div>
+      </div>
+    </section>
+
+    <section class="mapa">
+      <div class="container">
+        <h2>Localização</h2>
+
+        <p>
+          Rua Bruno Vicente da Luz, 801 - Espinheiros - Itajaí/SC
+        </p>
+
+        <a
+          class="botao botao-mapa"
+          href="https://www.google.com/maps/search/?api=1&query=Rua%20Bruno%20Vicente%20da%20Luz%20801%20Espinheiros%20Itajai%20SC"
+          target="_blank"
+        >
+          Abrir no Google Maps
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        Reparo de Placas Eletrônicas - Itajaí/SC
+      </p>
+
+      <p>
+        WhatsApp:
+        <a href="https://wa.me/5547992460045" target="_blank">
+          (47) 99246-0045
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <a
+    class="whatsapp-flutuante"
+    href="https://wa.me/5547992460045"
+    target="_blank"
+  >
+    WhatsApp
+  </a>
+</body>
+</html>
+Como jogar no Git
+No Git Bash, faça assim:
+
+bash
+
+
+mkdir reparo-placas
+cd reparo-placas
+notepad index.html
+Cole o código, salve e feche.
+
+Depois rode:
+
+bash
+
+
+git init
+git add .
+git commit -m "Site HTML com QR Code"
+git branch -M main
+git remote add origin https://github.com/SEU-USUARIO/reparo-placas.git
+git push -u origin main
+Depois de publicar
+Quando o GitHub Pages gerar o link do site, troque no index.html:
+
+text
+
+
+https://SEU-USUARIO.github.io/reparo-placas/
+pelo seu link verdadeiro.
+
+Depois envie a alteração:
+
+bash
+
+
+git add .
+git commit -m "Ajusta link do QR Code"
+git push
+
+
+nao sei usar o gitbash pages onde encontro ?
+GPT-5.5
+Valmar, são duas coisas diferentes:
+
+1. Git Bash
+É o programa no seu Windows para mandar arquivos para o GitHub.
+
+Você encontra assim:
+
+Clique no botão Iniciar do Windows
+Digite:
+text
+
+
+Git Bash
+Clique em Git Bash
+Se não aparecer, precisa instalar o Git:
+
+https://git-scm.com/download/win
+
+2. GitHub Pages
+É uma configuração dentro do site GitHub, não fica no Git Bash.
+
+Você encontra assim:
+
+Entre no GitHub:
+https://github.com
+Abra o seu repositório, por exemplo:
+text
+
+
+reparo-placas
+No topo do repositório, clique em:
+text
+
+
+Settings
+No menu lateral esquerdo, procure:
+text
+
+
+Pages
+Em Build and deployment, deixe assim:
+text
+
+
+Source: Deploy from a branch
+Em Branch, escolha:
+text
+
+
+main
+Ao lado, escolha:
+text
+
+
+/root
+Clique em:
+text
+
+
+Save
+Depois de alguns minutos, o GitHub vai mostrar um link parecido com:
+
+text
+
+
+https://seu-usuario.github.io/reparo-placas/
+Esse será o link do seu site.
+
+Se você não quer usar Git Bash
+Dá para fazer direto pelo site do GitHub.
+
+Passo a passo sem Git Bash
+1. Entre no GitHub
+Acesse:
+
+https://github.com
+
+2. Crie um repositório
+Clique no botão New ou + > New repository.
+
+Coloque o nome:
+
+text
+
+
+reparo-placas
+Marque como:
+
+text
+
+
+Public
+Depois clique em:
+
+text
+
+
+Create repository
+3. Criar o arquivo index.html
+Dentro do repositório, clique em:
+
+text
+
+
+creating a new file
+Ou:
+
+text
+
+
+Add file > Create new file
+No nome do arquivo, coloque:
+
+text
+
+
+index.html
+Cole o código HTML que te mandei.
+
+Depois clique em:
+
+text
+
+
+Commit changes
+4. Ativar o GitHub Pages
+Agora vá em:
+
+text
+
+
+Settings > Pages
+Configure:
+
+text
+
+
+Source: Deploy from a branch
+Branch: main
+Folder: /root
+Clique em:
+
+text
+
+
+Save
+Onde aparece o link do site?
+Depois de salvar em Pages, aguarde um pouco.
+
+Na própria tela Settings > Pages, vai aparecer algo como:
+
+text
+
+
+Your site is live at https://seu-usuario.github.io/reparo-placas/
+Esse é o endereço do seu site.
+
+Resumo bem direto
+Git Bash fica no Windows, no menu Iniciar.
+GitHub Pages fica no site GitHub, dentro do repositório em:
+text
+
+
+Settings > Pages
+Se quiser, Valmar, eu posso te passar o passo a passo 100% pelo navegador, sem usar Git Bash.
+
+
+
+achei o seotr em que posso fazer as pastas ,fiz o index.html e agora o css?
+GPT-5.5
+Valmar, se você colou aquele código único que eu mandei antes, não precisa criar CSS separado, porque o CSS já está dentro do próprio index.html, nesta parte:
+
+html
+
+
+<style>
+  ...
+</style>
+Então, se você já criou o index.html com aquele código completo, o próximo passo é ativar o GitHub Pages.
+
+Se quiser deixar CSS separado
+Aí sim você cria um arquivo chamado:
+
+text
+
+
+style.css
+Na mesma pasta do index.html.
+
+1. No GitHub, clique em:
+text
+
+
+Add file > Create new file
+2. No nome do arquivo, coloque:
+text
+
+
+style.css
+3. Cole o CSS nele
+Por exemplo:
+
+css
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7fb;
+  color: #1f2937;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: linear-gradient(135deg, #0f172a, #1e40af);
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.botao {
+  display: inline-block;
+  background: #22c55e;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.qrcode {
+  text-align: center;
+  background: #eaf1ff;
+}
+
+.qrcode img {
+  width: 260px;
+  max-width: 100%;
+}
+
+footer {
+  background: #0f172a;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+Depois clique em:
+
+text
+
+
+Commit changes
+4. Agora ligue o CSS no index.html
+Abra o arquivo index.html e dentro do <head>, coloque esta linha:
+
+html
+
+
+<link rel="stylesheet" href="style.css">
+Exemplo:
+
+html
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reparo de Placas Eletrônicas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+Depois clique em:
+
+text
+
+
+Commit changes
+Atenção importante
+Se o seu index.html ainda tiver este trecho:
+
+html
+
+
+<style>
+  ...
+</style>
+Você pode deixar assim mesmo. Mas o ideal é escolher um dos dois jeitos:
+
+Jeito mais fácil
+Tudo dentro do index.html:
+
+text
+
+
+index.html
+Não precisa de style.css.
+
+Jeito organizado
+Separado em dois arquivos:
+
+text
+
+
+index.html
+style.css
+Minha recomendação para você agora
+Como você está começando, faça o jeito mais simples:
+
+text
+
+
+Use apenas o index.html completo com o CSS dentro dele.
+Depois disso, vá em:
+
+text
+
+
+Settings > Pages
+E ative:
+
+text
+
+
+Deploy from a branch
+main
+/root
+Save
+Aí o GitHub vai gerar o link do seu site.
+
+
+
+Pergunte qualquer coisa
+
+
+
+
