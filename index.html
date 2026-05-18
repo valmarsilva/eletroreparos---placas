@@ -13,6 +13,8 @@
   />
 
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="favicon.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
   <link rel="manifest" href="manifest.webmanifest" />
 </head>
 
@@ -119,32 +121,56 @@
 
     <section class="qrcode">
       <div class="container">
-        <h2>QR Code do Site</h2>
+        <h2>QR Codes Úteis</h2>
 
         <p>
-          Escaneie o QR Code abaixo para abrir este site no celular.
+          Escaneie com o celular para abrir o WhatsApp, visitar o site ou fixar o app na tela inicial.
         </p>
 
-        <div class="qrcode-card">
-          <h3>Acessar Site</h3>
+        <div class="qrcodes-grid">
+          <div class="qrcode-card">
+            <h3>WhatsApp</h3>
+            <img
+              id="whatsapp-qr"
+              src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https://wa.me/5547992460045"
+              alt="QR Code WhatsApp"
+            />
+            <p>Abrir conversa no WhatsApp</p>
+            <a class="botao-site" id="whatsapp-link" href="https://wa.me/5547992460045" target="_blank">
+              Abrir WhatsApp
+            </a>
+          </div>
 
-          <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https://SEU-USUARIO.github.io/reparo-placas/"
-            alt="QR Code para acessar o site"
-          />
+          <div class="qrcode-card">
+            <h3>Site</h3>
+            <img
+              id="site-qr"
+              src=""
+              alt="QR Code do site"
+            />
+            <p>Abrir o site no celular</p>
+            <a class="botao-site" id="site-link" href="#" target="_blank">
+              Abrir site
+            </a>
+          </div>
 
-          <p>
-            Aponte a câmera do celular para acessar.
-          </p>
-
-          <a
-            class="botao-site"
-            href="https://SEU-USUARIO.github.io/reparo-placas/"
-            target="_blank"
-          >
-            Abrir Site
-          </a>
+          <div class="qrcode-card">
+            <h3>Fixar no celular</h3>
+            <img
+              id="install-qr"
+              src=""
+              alt="QR Code para fixar no celular"
+            />
+            <p>Pare um momento para adicionar à tela inicial.</p>
+            <button id="btnInstalar" class="botao-instalar" type="button">
+              Instalar App
+            </button>
+          </div>
         </div>
+
+        <p class="aviso">
+          Se o botão de instalação não aparecer no celular, use o navegador do celular e escolha “Adicionar à tela inicial”.
+        </p>
       </div>
     </section>
 
@@ -355,11 +381,61 @@
     window.open(url, "_blank");
   }
 
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(function(err){
-      console.warn('SW registration failed:', err);
+  window.addEventListener('load', function() {
+    const whatsappUrl = 'https://wa.me/5547992460045';
+    const currentUrl = window.location.origin + window.location.pathname;
+    const qrServer = 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=';
+
+    const whatsappQr = document.getElementById('whatsapp-qr');
+    const siteQr = document.getElementById('site-qr');
+    const installQr = document.getElementById('install-qr');
+    const siteLink = document.getElementById('site-link');
+    const whatsappLink = document.getElementById('whatsapp-link');
+    const installBtn = document.getElementById('btnInstalar');
+
+    if (whatsappQr) {
+      whatsappQr.src = qrServer + encodeURIComponent(whatsappUrl);
+    }
+    if (siteQr) {
+      siteQr.src = qrServer + encodeURIComponent(currentUrl);
+    }
+    if (installQr) {
+      installQr.src = qrServer + encodeURIComponent(currentUrl);
+    }
+    if (siteLink) {
+      siteLink.href = currentUrl;
+    }
+    if (whatsappLink) {
+      whatsappLink.href = whatsappUrl;
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(function(err){
+        console.warn('SW registration failed:', err);
+      });
+    }
+
+    let deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', function(event) {
+      event.preventDefault();
+      deferredPrompt = event;
+      if (installBtn) {
+        installBtn.style.display = 'inline-block';
+      }
     });
-  }
+
+    if (installBtn) {
+      installBtn.addEventListener('click', async function() {
+        if (!deferredPrompt) {
+          return;
+        }
+        deferredPrompt.prompt();
+        const choiceResult = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        installBtn.style.display = 'none';
+      });
+    }
+  });
 </script>
 </body>
 </html>
