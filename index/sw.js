@@ -1,5 +1,5 @@
 const CACHE_NAME = "reparo-placas-v1";
-
+const numeroWhatsApp = "5547992460045";
 const FILES_TO_CACHE = [
   "./",
   "./index.html",

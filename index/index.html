@@ -582,7 +582,7 @@
   >
     WhatsApp
   </a>
-  <script>
+<script>
   function enviarWhatsApp() {
     const nome = document.getElementById("nome").value;
     const telefone = document.getElementById("telefone").value;
@@ -595,25 +595,36 @@
     const defeito = document.getElementById("defeito").value;
     const observacoes = document.getElementById("observacoes").value;
 
-    const numeroWhatsApp = "5547999999999";
+    const numeroWhatsApp = "5547992460045";
+
+    if (!nome || !telefone || !tipoPlaca || !aparelho || !defeito) {
+      alert("Por favor, preencha os campos obrigatórios antes de enviar pelo WhatsApp.");
+      return;
+    }
 
     const mensagem = `
 Nova solicitação de orçamento - TecnoReparos PlacasEletro
+
+DADOS DO CLIENTE
 
 Nome: ${nome}
 Telefone/WhatsApp: ${telefone}
 E-mail: ${email}
 Cidade/Bairro: ${cidade}
 
+INFORMAÇÕES DA PLACA
+
 Tipo de placa: ${tipoPlaca}
 Aparelho ou veículo de origem: ${aparelho}
 Marca e modelo: ${marcaModelo}
 Código da placa: ${codigoPlaca}
 
-Descrição do defeito:
+DESCRIÇÃO DO DEFEITO
+
 ${defeito}
 
-Observações:
+OBSERVAÇÕES
+
 ${observacoes}
     `;
 
