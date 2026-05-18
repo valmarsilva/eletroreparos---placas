@@ -163,6 +163,13 @@ h2 {
   color: #334155;
 }
 
+.install-note {
+  font-weight: normal;
+  color: #475569;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
 .botao-site,
 .botao-qrcode {
   display: inline-block;
